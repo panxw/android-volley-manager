@@ -1,9 +1,9 @@
 Android Volley Manager
 ====================
 ##About
-Android Volley Manager based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).  
+Android Volley Manager is based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).  
 Powered by HttpURLConnection, no HttpClient need now! (apache http [Depracated](http://dwz.cn/245GXz))   
-With JSON, XML, Map, RequestMap(with file) support.  
+JSON, XML, Map, RequestMap(with file) request supported.  
 
 #####Require Android 2.3+(API>=9).  
 
