@@ -1,27 +1,26 @@
 Android Volley Manager
 ====================
 ##About
-Android Volley Manager based on [Volley](https://github.com/mcxiaoke/android-volley).  
-Implemented by HttpURLConnection, no HttpClient need now! (apache http [Depracated](http://dwz.cn/245GXz))   
+Android Volley Manager based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).  
+Powered by HttpURLConnection, no HttpClient need now! (apache http [Depracated](http://dwz.cn/245GXz))   
 With JSON, XML, Map, RequestMap(with file) support.  
 
-####Require Android 2.3+(API>=9).  
-
+#####Require Android 2.3+(API>=9).  
 
 ##Usage
-####for Maven
+#####for Maven
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
 		<version>1.0.1</version>
 	</dependency>
 
-####for Gradle
+#####for Gradle
 	dependencies {
 		compile 'com.panxw.volley:library:1.0.1'
 	}
 
-####latest jars for download
+#####latest jars for download
    1.[com.panxw.volley-1.0.1-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.1-sources.jar)  
    2.[com.panxw.volley-1.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.1-javadoc.jar)  
 
@@ -143,6 +142,4 @@ With JSON, XML, Map, RequestMap(with file) support.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-
 
