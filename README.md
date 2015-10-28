@@ -1,11 +1,11 @@
 Android Http RequestManager based on [Volley](https://github.com/mcxiaoke/android-volley).
 =====================
-#About
+##About
 Android Http RequestManager based on HttpURLConnection, No HttpClient(apache http) need!  
 With JSON, XML, Map, RequestMap(with file) support.  
 Require Android 2.3+(API>=9).  
 
-#Usage
+##Usage
 ####for Maven
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
@@ -18,7 +18,7 @@ Require Android 2.3+(API>=9).
 		compile 'com.panxw.volley:library:1.0.1'
 	}
 
-#Sample
+##Sample
 #####1.init RequestManager in your Application
 	public class VolleyApplication extends Application {
 		@Override
