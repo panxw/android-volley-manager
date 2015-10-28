@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = '1.0.0'
+version = libraryVersion
 android {
     compileSdkVersion 20
     buildToolsVersion '20.0.0'
@@ -69,8 +69,6 @@ install {
 }
 
 // This is the library version used when deploying the artifact
-version = libraryVersion
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
