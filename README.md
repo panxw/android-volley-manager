@@ -1,7 +1,7 @@
-Android Http RequestManager based on [Volley](https://github.com/mcxiaoke/android-volley).
+##Android Http RequestManager based on [Volley](https://github.com/mcxiaoke/android-volley).
 =====================
 ##About
-Android Http RequestManager based on HttpURLConnection, No HttpClient(apache http) need!  
+Implemented by HttpURLConnection, no HttpClient(apache http) need!  
 With JSON, XML, Map, RequestMap(with file) support.  
 Require Android 2.3+(API>=9).  
 
