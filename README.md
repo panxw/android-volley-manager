@@ -1,7 +1,12 @@
+Android Volley Manager
+====================
 ##About
-Android Http RequestManager based on [Volley](https://github.com/mcxiaoke/android-volley), implemented by HttpURLConnection, no HttpClient(apache http) need!  
+Android Volley Manager based on [Volley](https://github.com/mcxiaoke/android-volley).  
+Implemented by HttpURLConnection, no HttpClient need now! (apache http [Depracated](http://dwz.cn/245GXz))   
 With JSON, XML, Map, RequestMap(with file) support.  
-Require Android 2.3+(API>=9).  
+
+####Require Android 2.3+(API>=9).  
+
 
 ##Usage
 ####for Maven
@@ -21,7 +26,7 @@ Require Android 2.3+(API>=9).
    2.[com.panxw.volley-1.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.1-javadoc.jar)  
 
 ##Sample
-#####1.init RequestManager in your Application
+#####init RequestManager in your Application
 	public class VolleyApplication extends Application {
 		@Override
 		public void onCreate() {
@@ -35,7 +40,7 @@ Require Android 2.3+(API>=9).
 		}
 	}
 
-#####2.use RequestManager to load data
+#####use RequestManager to load data
 	public class MainActivity extends Activity implements RequestListener {
 		private static final String OUT_FILE = "upload.txt";
 		private static final String OUT_DATA = "sadf464764sdf3ds1f3adsf78921355u2390q3rtheslafkhsdafhreasof";
@@ -121,6 +126,23 @@ Require Android 2.3+(API>=9).
 		}
 	}
 
-##Related
-######Deprecated HTTP Classes...in Android 5.1: http://dwz.cn/245GXz  
+## License
+
+
+    Copyright (C) 2014 Xiaoke Zhang
+    Copyright (C) 2011 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
 
