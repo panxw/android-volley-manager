@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import com.android.volley.http.HttpEntity;
 import com.android.volley.http.MultipartHttpEntity;

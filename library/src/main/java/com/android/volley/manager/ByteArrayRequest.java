@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -8,7 +8,6 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.http.HttpEntity;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.panxw.volley.RequestMap;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

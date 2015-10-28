@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import android.content.Context;
 import android.util.AttributeSet;

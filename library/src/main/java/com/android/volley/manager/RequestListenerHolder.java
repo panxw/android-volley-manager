@@ -1,8 +1,8 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import android.app.Activity;
 
-import com.panxw.volley.RequestManager.RequestListener;
+import com.android.volley.manager.RequestManager.RequestListener;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;

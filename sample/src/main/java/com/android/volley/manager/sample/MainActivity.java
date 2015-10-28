@@ -1,13 +1,13 @@
-package com.panxw.volley.sample;
+package com.android.volley.manager.sample;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.panxw.volley.LoadControler;
-import com.panxw.volley.RequestManager;
-import com.panxw.volley.RequestManager.RequestListener;
-import com.panxw.volley.RequestMap;
+import com.android.volley.manager.LoadControler;
+import com.android.volley.manager.RequestManager;
+import com.android.volley.manager.RequestManager.RequestListener;
+import com.android.volley.manager.RequestMap;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import java.util.Map;
 

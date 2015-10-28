@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import com.android.volley.Request;
 

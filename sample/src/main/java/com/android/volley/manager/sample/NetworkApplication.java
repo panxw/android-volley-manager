@@ -1,6 +1,6 @@
-package com.panxw.volley.sample;
+package com.android.volley.manager.sample;
 
-import com.panxw.volley.RequestManager;
+import com.android.volley.manager.RequestManager;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 

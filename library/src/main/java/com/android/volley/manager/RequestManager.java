@@ -1,4 +1,4 @@
-package com.panxw.volley;
+package com.android.volley.manager;
 
 import android.content.Context;
 
@@ -36,7 +36,7 @@ public class RequestManager {
 		void onRequest();
 
 		void onSuccess(String response, Map<String, String> headers,
-				String url, int actionId);
+					   String url, int actionId);
 
 		void onError(String errorMsg, String url, int actionId);
 	}
@@ -90,7 +90,7 @@ public class RequestManager {
 
 	/**
 	 * default post method
-	 * 
+	 *
 	 * @param url
 	 * @param data
 	 *            String, Map<String, String> or RequestMap(with file)
@@ -105,7 +105,7 @@ public class RequestManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param url
 	 * @param data
 	 *            String, Map<String, String> or RequestMap(with file)
@@ -125,7 +125,7 @@ public class RequestManager {
 
 	/**
 	 * request
-	 * 
+	 *
 	 * @param method
 	 *            mainly Method.POST and Method.GET
 	 * @param url

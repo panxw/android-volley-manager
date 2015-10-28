@@ -1,4 +1,4 @@
-package com.panxw.volley.sample;
+package com.android.volley.manager.sample;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader.ImageContainer;
 import com.android.volley.toolbox.ImageLoader.ImageListener;
-import com.panxw.volley.sample.R;
+import com.android.volley.manager.sample.R;
 
 
 import java.lang.ref.WeakReference;
