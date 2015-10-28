@@ -10,14 +10,14 @@ JSON, XML, Map, RequestMap(with file) request supported.
 ##Usage
 #####for Maven
 	<dependency>
-		<groupId>com.panxw.volley</groupId>
-		<artifactId>library</artifactId>
+		<groupId>com.panxw.android</groupId>
+		<artifactId>volley</artifactId>
 		<version>1.0.1</version>
 	</dependency>
 
 #####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:1.0.1'
+		compile 'com.panxw.android:volley:1.0.1'
 	}
 
 #####latest jars for download
