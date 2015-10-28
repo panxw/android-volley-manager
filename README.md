@@ -1,27 +1,31 @@
+Android Volley Manager
+====================
 ##About
-Android Http RequestManager based on [Volley](https://github.com/mcxiaoke/android-volley), implemented by HttpURLConnection, no HttpClient(apache http) need!  
-With JSON, XML, Map, RequestMap(with file) support.  
-Require Android 2.3+(API>=9).  
+Android Volley Manager is based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).  
+Powered by HttpURLConnection, no HttpClient need now! (apache http [Depracated](http://dwz.cn/245GXz))   
+JSON, XML, Map, RequestMap(with file) request supported.  
+
+#####Require Android 2.3+(API>=9).  
 
 ##Usage
-####for Maven
+#####for Maven
 	<dependency>
-		<groupId>com.panxw.volley</groupId>
-		<artifactId>library</artifactId>
+		<groupId>com.panxw.android</groupId>
+		<artifactId>volley</artifactId>
 		<version>1.0.1</version>
 	</dependency>
 
-####for Gradle
+#####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:1.0.1'
+		compile 'com.panxw.android:volley:1.0.1'
 	}
 
-####latest jars for download
+#####latest jars for download
    1.[com.panxw.volley-1.0.1-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.1-sources.jar)  
    2.[com.panxw.volley-1.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.1-javadoc.jar)  
 
 ##Sample
-#####1.init RequestManager in your Application
+#####init RequestManager in your Application
 	public class VolleyApplication extends Application {
 		@Override
 		public void onCreate() {
@@ -35,7 +39,7 @@ Require Android 2.3+(API>=9).
 		}
 	}
 
-#####2.use RequestManager to load data
+#####use RequestManager to load data
 	public class MainActivity extends Activity implements RequestListener {
 		private static final String OUT_FILE = "upload.txt";
 		private static final String OUT_DATA = "sadf464764sdf3ds1f3adsf78921355u2390q3rtheslafkhsdafhreasof";
@@ -121,6 +125,21 @@ Require Android 2.3+(API>=9).
 		}
 	}
 
-##Related
-######Deprecated HTTP Classes...in Android 5.1: http://dwz.cn/245GXz  
+## License
+
+
+    Copyright (C) 2014 Xiaoke Zhang
+    Copyright (C) 2011 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
