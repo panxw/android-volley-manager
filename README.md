@@ -128,8 +128,6 @@ Android 2.3+(API>=9) is required.
 
 ## License
 
-
-    Copyright (C) 2014 Xiaoke Zhang
     Copyright (C) 2011 The Android Open Source Project
 
     Licensed under the Apache License, Version 2.0 (the "License");
