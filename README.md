@@ -13,17 +13,17 @@ Android 2.3+(API>=9) is required.
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
-		<version>0.0.1</version>
+		<version>1.0.0</version>
 	</dependency>
 
 #####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:0.0.1'
+		compile 'com.panxw.volley:library:1.0.0'
 	}
 
 #####latest jars for download
-   1.[com.panxw.volley-0.0.1-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-0.0.1-sources.jar)  
-   2.[com.panxw.volley-0.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-0.0.1-javadoc.jar)  
+   1.[com.panxw.volley-0.0.1-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.0-sources.jar)  
+   2.[com.panxw.volley-0.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.0-javadoc.jar)  
 
 ##Sample
 #####init RequestManager in your Application
