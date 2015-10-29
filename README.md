@@ -22,7 +22,8 @@ Android 2.3+(API>=9) is required.
 	}
 
 #####latest jars for download
-[com.panxw.volley-1.0.0-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.0-sources.jar)  [com.panxw.volley-1.0.0-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.0-javadoc.jar)  
+[com.panxw.volley-1.0.0-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.0-sources.jar)  
+[com.panxw.volley-1.0.0-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.0-javadoc.jar)  
 
 ##Sample
 #####init RequestManager in your Application
