@@ -128,7 +128,7 @@ Android 2.3+(API>=9) is required.
 
 #####Author
 QQ: 85902258  
-Linkedin:http://www.linkedin.com/in/panxw  
+Linkedin: http://www.linkedin.com/in/panxw  
 
 ## License
 
