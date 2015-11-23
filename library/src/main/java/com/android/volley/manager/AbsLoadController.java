@@ -8,7 +8,7 @@ import com.android.volley.Request;
  * @author steven pan
  * 
  */
-public  class AbsLoadControler implements LoadControler {
+public  class AbsLoadController implements LoadController {
 
 	protected Request<?> mRequest;
 

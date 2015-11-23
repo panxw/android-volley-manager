@@ -6,19 +6,19 @@ import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 
 /**
- * ByteArrayLoadControler implements Volley Listener & ErrorListener
+ * ByteArrayLoadController implements Volley Listener & ErrorListener
  * 
  * @author panxw
  * 
  */
-public class ByteArrayLoadControler extends AbsLoadControler implements
+public class ByteArrayLoadController extends AbsLoadController implements
 		Listener<NetworkResponse>, ErrorListener {
 
 	private LoadListener mOnLoadListener;
 
 	private int mAction = 0;
 
-	public ByteArrayLoadControler(LoadListener requestListener, int actionId) {
+	public ByteArrayLoadController(LoadListener requestListener, int actionId) {
 		this.mOnLoadListener = requestListener;
 		this.mAction = actionId;
 	}

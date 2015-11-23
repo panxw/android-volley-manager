@@ -6,7 +6,7 @@ package com.android.volley.manager;
  * @author panxw
  * 
  */
-public interface LoadControler {
+public interface LoadController {
 	void cancel();
 }
 

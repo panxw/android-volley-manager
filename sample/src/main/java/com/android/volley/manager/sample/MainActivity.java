@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.android.volley.manager.LoadControler;
+import com.android.volley.manager.LoadController;
 import com.android.volley.manager.RequestManager;
 import com.android.volley.manager.RequestManager.RequestListener;
 import com.android.volley.manager.RequestMap;
@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements RequestListener {
 
 	private static final String UPLOAD_URL = "http://www.splashpadmobile.com/upload.php";
 
-	private LoadControler mLoadControler = null;
+	private LoadController mLoadController = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +48,12 @@ public class MainActivity extends Activity implements RequestListener {
 	}
 
 	private void testPost() {
-		mLoadControler = RequestManager.getInstance().post(POST_URL, POST_JSON,
+		mLoadController = RequestManager.getInstance().post(POST_URL, POST_JSON,
 				this, 0);
 	}
 
 	private void testGet() {
-		mLoadControler = RequestManager.getInstance().get(GET_URL, this, 1);
+		mLoadController = RequestManager.getInstance().get(GET_URL, this, 1);
 	}
 
 	private void testFileUpload() {
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements RequestListener {
 		params.put("uploadedfile", uploadFile);
 		params.put("share", "1");
 
-		mLoadControler = RequestManager.getInstance().post(UPLOAD_URL, params,
+		mLoadController = RequestManager.getInstance().post(UPLOAD_URL, params,
 				this, 2);
 	}
 
@@ -87,8 +87,8 @@ public class MainActivity extends Activity implements RequestListener {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		if (mLoadControler != null) {
-			mLoadControler.cancel();
+		if (mLoadController != null) {
+			mLoadController.cancel();
 		}
 	}
 

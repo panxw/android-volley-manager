@@ -75,14 +75,14 @@ public class RequestManager {
 	 * @param url
 	 * @param requestListener
 	 * @param actionId
-	 * @return LoadControler object
+	 * @return LoadController object
 	 */
-	public LoadControler get(String url, RequestListener requestListener,
+	public LoadController get(String url, RequestListener requestListener,
 			int actionId) {
 		return this.get(url, requestListener, true, actionId);
 	}
 
-	public LoadControler get(String url, RequestListener requestListener,
+	public LoadController get(String url, RequestListener requestListener,
 			boolean shouldCache, int actionId) {
 		return this.request(Method.GET, url, null, null, requestListener,
 				shouldCache, TIMEOUT_COUNT, RETRY_TIMES, actionId);
@@ -98,7 +98,7 @@ public class RequestManager {
 	 * @param actionId
 	 * @return LoadControler object
 	 */
-	public LoadControler post(final String url, Object data,
+	public LoadController post(final String url, Object data,
 			final RequestListener requestListener, int actionId) {
 		return this.post(url, data, requestListener, false, TIMEOUT_COUNT,
 				RETRY_TIMES, actionId);
@@ -114,9 +114,9 @@ public class RequestManager {
 	 * @param timeoutCount
 	 * @param retryTimes
 	 * @param actionId
-	 * @return LoadControler object
+	 * @return LoadController object
 	 */
-	public LoadControler post(final String url, Object data,
+	public LoadController post(final String url, Object data,
 			final RequestListener requestListener, boolean shouldCache,
 			int timeoutCount, int retryTimes, int actionId) {
 		return request(Method.POST, url, data, null, requestListener,
@@ -144,9 +144,9 @@ public class RequestManager {
 	 *            reqeust retry times
 	 * @param actionId
 	 *            request id
-	 * @return LoadControler object
+	 * @return LoadController object
 	 */
-	public LoadControler request(int method, final String url, Object data,
+	public LoadController request(int method, final String url, Object data,
 			final Map<String, String> headers,
 			final RequestListener requestListener, boolean shouldCache,
 			int timeoutCount, int retryTimes, int actionId) {
@@ -165,27 +165,27 @@ public class RequestManager {
 	 * @param timeoutCount
 	 * @param retryTimes
 	 * @param actionId
-	 * @return LoadControler object
+	 * @return LoadController object
 	 */
-	public LoadControler sendRequest(int method, final String url, Object data,
+	public LoadController sendRequest(int method, final String url, Object data,
 			final Map<String, String> headers,
 			final LoadListener requestListener, boolean shouldCache,
 			int timeoutCount, int retryTimes, int actionId) {
 		if (requestListener == null)
 			throw new NullPointerException();
 
-		final ByteArrayLoadControler loadControler = new ByteArrayLoadControler(
+		final ByteArrayLoadController loadController = new ByteArrayLoadController(
 				requestListener, actionId);
 
 		Request<?> request = null;
 		if (data != null && data instanceof RequestMap) {// force POST and No
 															// Cache
 			request = new ByteArrayRequest(Method.POST, url, data,
-					loadControler, loadControler);
+					loadController, loadController);
 			request.setShouldCache(false);
 		} else {
-			request = new ByteArrayRequest(method, url, data, loadControler,
-					loadControler);
+			request = new ByteArrayRequest(method, url, data, loadController,
+					loadController);
 			request.setShouldCache(shouldCache);
 		}
 
@@ -201,14 +201,14 @@ public class RequestManager {
 				retryTimes, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
 		request.setRetryPolicy(retryPolicy);
 
-		loadControler.bindRequest(request);
+		loadController.bindRequest(request);
 
 		if (this.mRequestQueue == null)
 			throw new NullPointerException();
 		requestListener.onStart();
 		this.mRequestQueue.add(request);
 
-		return loadControler;
+		return loadController;
 	}
 
 }
