@@ -13,17 +13,17 @@ Android 2.3+(API>=9) is required.
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</dependency>
 
 #####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:1.0.0'
+		compile 'com.panxw.volley:library:1.0.1'
 	}
 
 #####latest jars for download
-[com.panxw.volley-1.0.0-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.0-sources.jar)  
-[com.panxw.volley-1.0.0-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.0-javadoc.jar)  
+[com.panxw.volley-1.0.1-source.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.1-sources.jar)  
+[com.panxw.volley-1.0.1-javadoc.jar](https://github.com/panxw/android-volley-manager/raw/master/release/com.panxw.volley-1.0.1-javadoc.jar)  
 
 ##Sample
 #####init RequestManager in your Application
@@ -48,7 +48,7 @@ Android 2.3+(API>=9) is required.
 		private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
 		private static final String GET_URL = "https://raw.githubusercontent.com/panxw/android-volley-manager/master/test.txt";
 		private static final String UPLOAD_URL = "http://www.splashpadmobile.com/upload.php";
-		private LoadControler mLoadControler = null;
+		private LoadController mLoadController = null;
 	
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +61,11 @@ Android 2.3+(API>=9) is required.
 		}
 		
 		private void testPost() {//test post 
-			mLoadControler = RequestManager.getInstance().post(POST_URL, POST_JSON, this, 0);
+			mLoadController = RequestManager.getInstance().post(POST_URL, POST_JSON, this, 0);
 		}
 		
 		private void testGet() {//test GET
-			mLoadControler = RequestManager.getInstance().get(GET_URL, this, 1);
+			mLoadController = RequestManager.getInstance().get(GET_URL, this, 1);
 		}
 		
 		private void testFileUpload() {//test POST(with file) in RequestMap
@@ -76,7 +76,7 @@ Android 2.3+(API>=9) is required.
 			params.put("uploadedfile", uploadFile);
 			params.put("share", "1");
 	
-			mLoadControler = RequestManager.getInstance().post(UPLOAD_URL, params, this, 2);
+			mLoadController = RequestManager.getInstance().post(UPLOAD_URL, params, this, 2);
 		}
 	
 		@Override
@@ -98,8 +98,8 @@ Android 2.3+(API>=9) is required.
 		@Override
 		public void onBackPressed() {
 			super.onBackPressed();
-			if (mLoadControler != null) {
-				mLoadControler.cancel();
+			if (mLoadController != null) {
+				mLoadController.cancel();
 			}
 		}
 	
