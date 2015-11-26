@@ -68,8 +68,9 @@ install {
     }
 }
 
-task releaseJar(type:Jar) {   
-	from('build/intermediates/classes/release/')
+//Relese jar for eclipse
+task releaseJar(type:Jar) {
+    from('build/intermediates/classes/release/')
     classifier = 'classes'
     destinationDir = file('build/libs')  
 }  
