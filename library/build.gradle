@@ -68,6 +68,12 @@ install {
     }
 }
 
+task releaseJar(type:Jar) {   
+	from('build/intermediates/classes/release/')
+    classifier = 'classes'
+    destinationDir = file('build/libs')  
+}  
+
 // This is the library version used when deploying the artifact
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -86,6 +92,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+	archives releaseJar
 }
 
 // Bintray
