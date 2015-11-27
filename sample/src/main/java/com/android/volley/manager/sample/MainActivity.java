@@ -27,11 +27,11 @@ public class MainActivity extends Activity implements RequestListener {
 
 	private static final String OUT_DATA = "sadf464764sdf3ds1f3adsf789213557r12-34912-482130487321gjsaldfalfu2390q3rtheslafkhsdafhreasof";
 
-	private static final String POST_URL = "http://allthelucky.ap01.aws.af.cm/memoServer";
+	private static final String POST_URL = "http://winfirm.sturgeon.mopaas.com/memoServer";
 
 	private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
 
-	private static final String GET_URL = "https://raw.githubusercontent.com/panxw/android-volley-manager/master/test.txt";
+	private static final String GET_URL = "http://winfirm.sturgeon.mopaas.com";
 
 	private static final String UPLOAD_URL = "http://www.splashpadmobile.com/upload.php";
 
