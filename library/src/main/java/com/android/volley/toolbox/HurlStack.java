@@ -26,6 +26,11 @@ import com.android.volley.Request.Method;
 import com.android.volley.http.HttpEntity;
 import com.android.volley.http.HttpResponse;
 
+import org.apache.http.HttpStatus;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.StatusLine;
+import org.apache.http.message.BasicStatusLine;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -100,6 +105,7 @@ public class HurlStack implements HttpStack {
             connection.addRequestProperty(headerName, map.get(headerName));
         }
         setConnectionParametersForRequest(connection, request);
+        ProtocolVersion protocolVersion = new ProtocolVersion("HTTP", 1, 1);
         // Initialize HttpResponse with data from the HttpURLConnection.
         int responseCode = connection.getResponseCode();
         if (responseCode == -1) {
@@ -107,8 +113,12 @@ public class HurlStack implements HttpStack {
             // Signal to the caller that something was wrong with the connection.
             throw new IOException("Could not retrieve response code from HttpUrlConnection.");
         }
+        StatusLine responseStatus = new BasicStatusLine(protocolVersion,
+                connection.getResponseCode(), connection.getResponseMessage());
         HttpResponse response = new HttpResponse(connection.getResponseCode(), connection.getResponseMessage());
-        response.setEntity(entityFromConnection(connection));
+        if (hasResponseBody(request.getMethod(), responseStatus.getStatusCode())) {
+            response.setEntity(entityFromConnection(connection));
+        }
         for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
             if (header.getKey() != null) {
             	response.addHeader(header.getKey(), header.getValue().get(0));
@@ -233,5 +243,19 @@ public class HurlStack implements HttpStack {
             out.write(body);
             out.close();
         }
+    }
+
+    /**
+     * Checks if a response message contains a body.
+     * @see <a href="https://tools.ietf.org/html/rfc7230#section-3.3">RFC 7230 section 3.3</a>
+     * @param requestMethod request method
+     * @param responseCode response status code
+     * @return whether the response has a body
+     */
+    private static boolean hasResponseBody(int requestMethod, int responseCode) {
+        return requestMethod != Request.Method.HEAD
+                && !(HttpStatus.SC_CONTINUE <= responseCode && responseCode < HttpStatus.SC_OK)
+                && responseCode != HttpStatus.SC_NO_CONTENT
+                && responseCode != HttpStatus.SC_NOT_MODIFIED;
     }
 }
