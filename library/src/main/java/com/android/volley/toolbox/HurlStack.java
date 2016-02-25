@@ -114,6 +114,7 @@ public class HurlStack implements HttpStack {
             	response.addHeader(header.getKey(), header.getValue().get(0));
             }
         }
+        response.checkGzip();
         return response;
     }
 
@@ -125,7 +126,7 @@ public class HurlStack implements HttpStack {
     private static HttpEntity entityFromConnection(HttpURLConnection connection) {
     	HttpEntity entity = new HttpEntity();
         InputStream inputStream;
-        
+
         try {
             inputStream = connection.getInputStream();
         } catch (IOException ioe) {

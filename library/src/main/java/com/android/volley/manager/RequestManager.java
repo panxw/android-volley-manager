@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.RetryPolicy;
 import com.android.volley.toolbox.Volley;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,12 +21,13 @@ import java.util.Map;
  */
 public class RequestManager {
 
-	private static final int TIMEOUT_COUNT = 10 * 1000;
+	public static final String ACCEPT_ENCODING = "Accept-Encoding";
+	public static final String GZIP = "gzip";
 
+	private static final int TIMEOUT_COUNT = 10 * 1000;
 	private static final int RETRY_TIMES = 1;
 
 	private volatile static RequestManager INSTANCE = null;
-
 	private RequestQueue mRequestQueue = null;
 
 	/**
@@ -189,12 +191,19 @@ public class RequestManager {
 			request.setShouldCache(shouldCache);
 		}
 
-		if (headers != null && !headers.isEmpty()) {// add headers if not empty
-			try {
-				request.getHeaders().putAll(headers);
-			} catch (AuthFailureError e) {
-				e.printStackTrace();
-			}
+		//set request header
+		Map<String, String> requestHeaders = new HashMap<String, String>();
+		if (headers != null && !headers.isEmpty()) {
+			requestHeaders.putAll(headers);
+		}
+		if(requestHeaders.get(ACCEPT_ENCODING) == null) {
+			requestHeaders.put(ACCEPT_ENCODING, GZIP);
+		}
+
+		try {
+			request.getHeaders().putAll(requestHeaders);
+		} catch (AuthFailureError e) {
+			e.printStackTrace();
 		}
 
 		RetryPolicy retryPolicy = new DefaultRetryPolicy(timeoutCount,
