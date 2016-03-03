@@ -127,6 +127,7 @@ Tested in Android 5.1, 6.0.
 	}
 
 #####Author
+Blog: http://www.panxw.com  
 GitHub: https://github.com/panxw  
 Linkedin: http://www.linkedin.com/in/panxw  
 QQ: 85902258  
