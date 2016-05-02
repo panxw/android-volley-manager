@@ -7,12 +7,14 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 public class HttpResponse {
+	public static final int SC_CONTINUE=100;
+	public static final int SC_OK = 200;
+	public static final int SC_NO_CONTENT=204;
 	public static final int SC_MOVED_PERMANENTLY = 301;
 	public static final int SC_MOVED_TEMPORARILY = 302;
 	public static final int SC_NOT_MODIFIED = 304;
 	public static final int SC_FORBIDDEN = 403;
 	public static final int SC_UNAUTHORIZED = 401;
-	public static final int SC_OK = 200;
 
 	private int responseCode;
 	private String responseMessage;
@@ -56,18 +58,14 @@ public class HttpResponse {
 		this.responseMessage = responseMessage;
 	}
 
-	public void checkGzip() throws IOException{
+	public boolean isGzipEnable(){
 		if(httpHeaders != null) {
 			String acceptEncoding = httpHeaders.get("Content-Encoding");
 			if(acceptEncoding != null && acceptEncoding.contains("gzip")) {
-				if(entityFromConnection != null) {
-					InputStream is = entityFromConnection.getContent();
-					if(is != null) {
-						entityFromConnection.setContent(new GZIPInputStream(is));
-					}
-				}
+				return true;
 			}
 		}
+		return false;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.android.volley.manager.sample;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.volley.manager.LoadController;
 import com.android.volley.manager.RequestManager;
@@ -23,15 +24,17 @@ import java.util.Map;
  */
 public class MainActivity extends Activity implements RequestListener {
 
-	private static final String OUT_FILE = "upload.txt";
+	private static final String TAG = "VolleyTest";
 
-	private static final String OUT_DATA = "sadf464764sdf3ds1f3adsf789213557r12-34912-482130487321gjsaldfalfu2390q3rtheslafkhsdafhreasof";
+	private static final String GET_URL = "http://www.panxw.com/about.html";
 
-	private static final String POST_URL = "http://winfirm.sturgeon.mopaas.com/memoServer";
+	private static final String POST_URL = "http://www.panxw.com/index.php";
 
 	private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
 
-	private static final String GET_URL = "http://winfirm.sturgeon.mopaas.com";
+	private static final String OUT_FILE = "upload.txt";
+
+	private static final String OUT_DATA = "df464764sdf3ds1f3adsf789213557r12-34912-482130487321";
 
 	private static final String UPLOAD_URL = "http://www.splashpadmobile.com/upload.php";
 
@@ -42,18 +45,18 @@ public class MainActivity extends Activity implements RequestListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		this.testPost();
 		this.testGet();
+		this.testPost();
 		this.testFileUpload();
+	}
+
+	private void testGet() {
+		mLoadController = RequestManager.getInstance().get(GET_URL, this, 1);
 	}
 
 	private void testPost() {
 		mLoadController = RequestManager.getInstance().post(POST_URL, POST_JSON,
 				this, 0);
-	}
-
-	private void testGet() {
-		mLoadController = RequestManager.getInstance().get(GET_URL, this, 1);
 	}
 
 	private void testFileUpload() {
@@ -71,17 +74,17 @@ public class MainActivity extends Activity implements RequestListener {
 	@Override
 	public void onSuccess(String response, Map<String, String> headers,
 			String url, int actionId) {
-		System.out.println("actionId:" + actionId + ", OnSucess!\n" + response);
+		Log.d(TAG, "actionId:" + actionId + ", OnSucess!\n" + response);
 	}
 
 	@Override
 	public void onError(String errorMsg, String url, int actionId) {
-		System.out.println("actionId:" + actionId + ", onError!\n" + errorMsg);
+		Log.d(TAG, "actionId:" + actionId + ", onError!\n" + errorMsg);
 	}
 
 	@Override
 	public void onRequest() {
-		System.out.println("request send...");
+		Log.d(TAG, "request send...");
 	}
 
 	@Override

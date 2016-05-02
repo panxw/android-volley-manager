@@ -199,13 +199,13 @@ public class RequestManager {
 		if(requestHeaders.get(ACCEPT_ENCODING) == null) {
 			requestHeaders.put(ACCEPT_ENCODING, GZIP);
 		}
-
 		try {
 			request.getHeaders().putAll(requestHeaders);
 		} catch (AuthFailureError e) {
 			e.printStackTrace();
 		}
 
+		//set request retry policy
 		RetryPolicy retryPolicy = new DefaultRetryPolicy(timeoutCount,
 				retryTimes, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
 		request.setRetryPolicy(retryPolicy);

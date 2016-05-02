@@ -28,6 +28,7 @@ import com.android.volley.VolleyLog.MarkerLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -114,6 +115,11 @@ public abstract class Request<T> implements Comparable<Request<T>> {
 
     /** An opaque token tagging this request; used for bulk cancellation. */
     private Object mTag;
+
+    /**
+     * map for request headers
+     */
+    private Map<String, String> mHeaders = new HashMap<String, String>();
 
     /**
      * Creates a new request with the given URL and error listener.  Note that
@@ -360,8 +366,8 @@ public abstract class Request<T> implements Comparable<Request<T>> {
      * provide these values.
      * @throws AuthFailureError In the event of auth failure
      */
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        return Collections.emptyMap();
+    public Map<String, String> getHeaders() throws  AuthFailureError{
+        return mHeaders;
     }
 
     /**

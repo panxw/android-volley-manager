@@ -14,16 +14,16 @@ Tested in Android 5.1, 6.0.
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</dependency>
 
 #####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:1.0.1'
+		compile 'com.panxw.volley:library:1.0.2'
 	}
 
 #####latest jars for download
-[com.panxw.volley-1.0.1-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.1-classes.jar?raw=true)  
+[com.panxw.volley-1.0.2-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.2-classes.jar?raw=true)
 
 ##Sample
 #####init RequestManager in your Application
@@ -42,59 +42,70 @@ Tested in Android 5.1, 6.0.
 
 #####use RequestManager to load data
 	public class MainActivity extends Activity implements RequestListener {
-		private static final String OUT_FILE = "upload.txt";
-		private static final String OUT_DATA = "sadf464764sdf3ds1f3adsf78921355u2390q3rtheslafkhsdafhreasof";
-		private static final String POST_URL = "http://allthelucky.ap01.aws.af.cm/memoServer";
+
+		private static final String TAG = "VolleyTest";
+
+		private static final String GET_URL = "http://www.panxw.com/about.html";
+
+		private static final String POST_URL = "http://www.panxw.com/index.php";
+
 		private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
-		private static final String GET_URL = "https://raw.githubusercontent.com/panxw/android-volley-manager/master/test.txt";
+
+		private static final String OUT_FILE = "upload.txt";
+
+		private static final String OUT_DATA = "df464764sdf3ds1f3adsf789213557r12-34912-482130487321";
+
 		private static final String UPLOAD_URL = "http://www.splashpadmobile.com/upload.php";
+
 		private LoadController mLoadController = null;
-	
+
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_main);
-	
-			this.testPost();
+
 			this.testGet();
+			this.testPost();
 			this.testFileUpload();
 		}
-		
-		private void testPost() {//test post 
-			mLoadController = RequestManager.getInstance().post(POST_URL, POST_JSON, this, 0);
-		}
-		
-		private void testGet() {//test GET
+
+		private void testGet() {
 			mLoadController = RequestManager.getInstance().get(GET_URL, this, 1);
 		}
-		
-		private void testFileUpload() {//test POST(with file) in RequestMap
+
+		private void testPost() {
+			mLoadController = RequestManager.getInstance().post(POST_URL, POST_JSON,
+					this, 0);
+		}
+
+		private void testFileUpload() {
 			MainActivity.prepareFile(this);
-	
+
 			RequestMap params = new RequestMap();
 			File uploadFile = new File(this.getFilesDir(), OUT_FILE);
 			params.put("uploadedfile", uploadFile);
 			params.put("share", "1");
-	
-			mLoadController = RequestManager.getInstance().post(UPLOAD_URL, params, this, 2);
+
+			mLoadController = RequestManager.getInstance().post(UPLOAD_URL, params,
+					this, 2);
 		}
-	
+
 		@Override
 		public void onSuccess(String response, Map<String, String> headers,
 				String url, int actionId) {
-			System.out.println("actionId:" + actionId + ", OnSucess!\n" + response);
+			Log.d(TAG, "actionId:" + actionId + ", OnSucess!\n" + response);
 		}
-	
+
 		@Override
 		public void onError(String errorMsg, String url, int actionId) {
-			System.out.println("actionId:" + actionId + ", onError!\n" + errorMsg);
+			Log.d(TAG, "actionId:" + actionId + ", onError!\n" + errorMsg);
 		}
-	
+
 		@Override
 		public void onRequest() {
-			System.out.println("request send...");
+			Log.d(TAG, "request send...");
 		}
-	
+
 		@Override
 		public void onBackPressed() {
 			super.onBackPressed();
@@ -102,7 +113,7 @@ Tested in Android 5.1, 6.0.
 				mLoadController.cancel();
 			}
 		}
-	
+
 		private static void prepareFile(Context context) {
 			FileOutputStream fos = null;
 			try {
@@ -124,6 +135,7 @@ Tested in Android 5.1, 6.0.
 				}
 			}
 		}
+
 	}
 
 ####Author

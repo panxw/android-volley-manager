@@ -52,15 +52,6 @@ class ByteArrayRequest extends Request<NetworkResponse> {
 	}
 
 	@Override
-	public Map<String, String> getHeaders() throws AuthFailureError {
-		Map<String, String> headers = super.getHeaders();
-		if (null == headers || headers.equals(Collections.emptyMap())) {
-			headers = new HashMap<String, String>();
-		}
-		return headers;
-	}
-
-	@Override
 	public String getBodyContentType() {
 		if (httpEntity != null) {
 			return httpEntity.getContentType();

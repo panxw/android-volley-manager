@@ -29,6 +29,7 @@ import com.android.volley.http.HttpResponse;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -108,13 +109,14 @@ public class HurlStack implements HttpStack {
             throw new IOException("Could not retrieve response code from HttpUrlConnection.");
         }
         HttpResponse response = new HttpResponse(connection.getResponseCode(), connection.getResponseMessage());
-        response.setEntity(entityFromConnection(connection));
         for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
             if (header.getKey() != null) {
-            	response.addHeader(header.getKey(), header.getValue().get(0));
+                response.addHeader(header.getKey(), header.getValue().get(0));
             }
         }
-        response.checkGzip();
+        if (hasResponseBody(request.getMethod(), responseCode)) {
+            response.setEntity(entityFromConnection(connection, response.isGzipEnable()));
+        }
         return response;
     }
 
@@ -123,16 +125,26 @@ public class HurlStack implements HttpStack {
      * @param connection
      * @return an HttpEntity populated with data from <code>connection</code>.
      */
-    private static HttpEntity entityFromConnection(HttpURLConnection connection) {
-    	HttpEntity entity = new HttpEntity();
-        InputStream inputStream;
+    private static HttpEntity entityFromConnection(HttpURLConnection connection, boolean isGzipEable){
+        HttpEntity entity = new HttpEntity();
+        InputStream inputStream = null;
 
         try {
             inputStream = connection.getInputStream();
         } catch (IOException ioe) {
             inputStream = connection.getErrorStream();
         }
-        entity.setContent(inputStream);
+
+        //check gzip
+        if(isGzipEable) {
+            try{
+                entity.setContent(new GZIPInputStream(inputStream));
+            }catch (IOException e) {
+                entity.setContent(inputStream);
+            }
+        }else {
+            entity.setContent(inputStream);
+        }
         entity.setContentLength(connection.getContentLength());
         entity.setContentEncoding(connection.getContentEncoding());
         entity.setContentType(connection.getContentType());
@@ -235,5 +247,19 @@ public class HurlStack implements HttpStack {
             out.write(body);
             out.close();
         }
+    }
+
+    /**
+     * Checks if a response message contains a body.
+     * @see <a href="https://tools.ietf.org/html/rfc7230#section-3.3">RFC 7230 section 3.3</a>
+     * @param requestMethod request method
+     * @param responseCode response status code
+     * @return whether the response has a body
+     */
+    private static boolean hasResponseBody(int requestMethod, int responseCode) {
+        return requestMethod != Request.Method.HEAD
+                && !(HttpResponse.SC_CONTINUE <= responseCode && responseCode < HttpResponse.SC_OK)
+                && responseCode != HttpResponse.SC_NO_CONTENT
+                && responseCode != HttpResponse.SC_NOT_MODIFIED;
     }
 }
