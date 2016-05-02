@@ -7,7 +7,11 @@ JSON, XML, Map, RequestMap(with file) request supported.
 Android 2.3+(API>=9) is required.  
 Tested in Android 5.1, 6.0.  
 
-#####[ ![Download](https://api.bintray.com/packages/panxw/maven/android-volley-manager/images/download.svg) ](https://bintray.com/panxw/maven/android-volley-manager/_latestVersion)  
+## Update
+Version: v1.0.1  
+Date: 2016-05-02  
+Desc: fix header bug and add gzip support  
+__JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-volley-manager/images/download.svg) ](https://bintray.com/panxw/maven/android-volley-manager/_latestVersion)  
 
 ##Usage
 #####for Maven
