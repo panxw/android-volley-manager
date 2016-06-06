@@ -145,7 +145,7 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 ####Author
 Blog: http://www.panxw.com  
 Linkedin: http://www.linkedin.com/in/panxw  
-QQ: 85902258  
+QQ交流群: 168563980  
 
 ## License
 
