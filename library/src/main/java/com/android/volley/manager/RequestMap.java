@@ -78,6 +78,33 @@ public class RequestMap {
 		}
 	}
 
+	public String getParamsString(boolean withQuery) {
+		if(urlParams.isEmpty()) {
+			return null;
+		}
+
+		StringBuilder sb = new StringBuilder();
+		boolean looped = false;
+		for (ConcurrentHashMap.Entry<String, String> entry : urlParams
+				.entrySet()) {
+			if(looped) {
+				sb.append("&");
+			} else {
+				looped = true;
+			}
+			sb.append(entry.getKey()).append("=").append(entry.getValue());
+		}
+
+		if(sb.length()>0) {
+			if(withQuery) {
+				sb.insert(0, "?");
+			}
+			return sb.toString();
+		} else {
+			return null;
+		}
+	}
+
 	public HttpEntity getEntity() {
 		HttpEntity entity = null;
 		if (!fileParams.isEmpty()) {
