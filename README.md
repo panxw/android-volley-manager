@@ -8,9 +8,9 @@ Android 2.3+(API>=9) is required.
 Tested in Android 5.1, 6.0.  
 
 ## Update
-Version: __v1.0.2__  
-Date: 2016-05-02  
-Desc: fix header bug and add gzip support  
+Version: __v1.0.3__  
+Date: 2016-07-18  
+Desc: fix paramter bug.  
 __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-volley-manager/images/download.svg) ](https://bintray.com/panxw/maven/android-volley-manager/_latestVersion)  
 
 ##Usage
@@ -18,16 +18,16 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 	</dependency>
 
 #####for Gradle
 	dependencies {
-		compile 'com.panxw.volley:library:1.0.2'
+		compile 'com.panxw.volley:library:1.0.3'
 	}
 
 #####latest jars for download
-[com.panxw.volley-1.0.2-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.2-classes.jar?raw=true)
+[com.panxw.volley-1.0.3-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.3-classes.jar?raw=true)
 
 ##Sample
 #####init RequestManager in your Application
