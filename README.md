@@ -1,36 +1,37 @@
 Android Volley Manager
 ====================
-##About
+#### 1.About
 Based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).  
 Powered by HttpURLConnection, no HttpClient need now!(HttpClient is Deprecated in Android 5.1)  
 JSON, XML, Map, RequestMap(with file) request supported.  
 Android 2.3+(API>=9) is required.  
 Tested in Android 5.1, 6.0.  
 
-## Update
+#### 2.Update
 Version: __v1.0.3__  
 Date: 2016-07-18  
 Desc: fix paramter bug.  
 __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-volley-manager/images/download.svg) ](https://bintray.com/panxw/maven/android-volley-manager/_latestVersion)  
 
-##Usage
-#####for Maven
+#### 3.Usage
+##### for Maven
 	<dependency>
 		<groupId>com.panxw.volley</groupId>
 		<artifactId>library</artifactId>
 		<version>1.0.3</version>
 	</dependency>
 
-#####for Gradle
+##### for Gradle
 	dependencies {
 		compile 'com.panxw.volley:library:1.0.3'
 	}
 
-#####latest jars for download
+##### latest jars for download
 [com.panxw.volley-1.0.3-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.3-classes.jar?raw=true)
 
-##Sample
-#####init RequestManager in your Application
+#### 4.Sample
+##### init RequestManager in your Application
+```
 	public class VolleyApplication extends Application {
 		@Override
 		public void onCreate() {
@@ -43,8 +44,10 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 			super.onTerminate();
 		}
 	}
+```
 
 #####use RequestManager to load data
+```
 	public class MainActivity extends Activity implements RequestListener {
 
 		private static final String TAG = "VolleyTest";
@@ -141,11 +144,19 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 		}
 
 	}
+```
 
-####Author
-Blog: http://www.panxw.com  
-Linkedin: http://www.linkedin.com/in/panxw  
+#### 5.联系作者
+Email: winfirm(#)163.com  
 QQ交流群: 168563980  
+
+#### 6.赞助
+想给作者予以鼓励？欢迎打赏吧。  
+支付宝:  
+<img width="200" height="200" src="http://o83o7w0hk.bkt.clouddn.com//donate_qr/donate_alipay.jpg"/>
+
+微信:  
+<img width="200" height="200" src="http://o83o7w0hk.bkt.clouddn.com//donate_qr/donate_weixin.jpg"/>
 
 ## License
 
