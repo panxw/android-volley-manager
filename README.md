@@ -46,7 +46,7 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 	}
 ```
 
-#####use RequestManager to load data
+##### use RequestManager to load data
 ```
 	public class MainActivity extends Activity implements RequestListener {
 
