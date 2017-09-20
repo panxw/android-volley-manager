@@ -150,13 +150,6 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 Email: winfirm(#)163.com  
 QQ交流群: 168563980  
 
-#### 6.赞助
-想给作者予以鼓励？欢迎打赏吧。  
-支付宝:  
-<img width="200" height="200" src="http://o83o7w0hk.bkt.clouddn.com//donate_qr/donate_alipay.jpg"/>
-
-微信:  
-<img width="200" height="200" src="http://o83o7w0hk.bkt.clouddn.com//donate_qr/donate_weixin.jpg"/>
 
 ## License
 
