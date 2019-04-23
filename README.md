@@ -146,11 +146,6 @@ __JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-v
 	}
 ```
 
-#### 5.联系作者
-Email: winfirm(#)163.com  
-QQ交流群: 168563980  
-
-
 ## License
 
     Copyright (C) 2011 The Android Open Source Project
