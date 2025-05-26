@@ -9,10 +9,14 @@ import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.RetryPolicy;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSocketFactory;
 
 /**
  * RequestManager
@@ -49,6 +53,19 @@ public class RequestManager {
 
     public void init(Context context) {
         this.mRequestQueue = Volley.newRequestQueue(context);
+    }
+
+    public void init(Context context, SSLSocketFactory sslSocketFactory) {
+        HurlStack hurlStack = new HurlStack();
+        hurlStack.setSSLSocketFactory(sslSocketFactory);
+        this.mRequestQueue = Volley.newRequestQueue(context, hurlStack);
+    }
+
+    public void init(Context context, SSLSocketFactory sslSocketFactory, HostnameVerifier hostnameVerifier) {
+        HurlStack hurlStack = new HurlStack();
+        hurlStack.setSSLSocketFactory(sslSocketFactory);
+        hurlStack.setHostnameVerifier(hostnameVerifier);
+        this.mRequestQueue = Volley.newRequestQueue(context, hurlStack);
     }
 
     /**

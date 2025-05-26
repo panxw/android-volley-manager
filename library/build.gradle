@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 
-version = libraryVersion
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.1'
     resourcePrefix 'android_lib_'
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 20
+        minSdkVersion 17
         versionCode 1
         versionName version
     }
@@ -28,111 +27,111 @@ android {
 dependencies {
 }
 
-group = publishedGroupId  // Maven Group ID for the artifact
+//group = publishedGroupId  // Maven Group ID for the artifact
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                groupId publishedGroupId
-                artifactId artifact
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//                groupId publishedGroupId
+//                artifactId artifact
+//
+//                // Add your description here
+//                name libraryName
+//                description libraryDescription
+//                url siteUrl
+//
+//                // Set your license
+//                licenses {
+//                    license {
+//                        name licenseName
+//                        url licenseUrl
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id developerId
+//                        name developerName
+//                        email developerEmail
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
 
-                // Add your description here
-                name libraryName
-                description libraryDescription
-                url siteUrl
+////Relese jar for eclipse
+//task releaseJar(type:Jar) {
+//    from('build/intermediates/classes/release/')
+//    classifier = 'classes'
+//    destinationDir = file('build/libs')
+//}
+//
+//// This is the library version used when deploying the artifact
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
 
-                // Set your license
-                licenses {
-                    license {
-                        name licenseName
-                        url licenseUrl
-                    }
-                }
-                developers {
-                    developer {
-                        id developerId
-                        name developerName
-                        email developerEmail
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-
-//Relese jar for eclipse
-task releaseJar(type:Jar) {
-    from('build/intermediates/classes/release/')
-    classifier = 'classes'
-    destinationDir = file('build/libs')  
-}  
-
-// This is the library version used when deploying the artifact
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-	archives releaseJar
-}
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//	archives releaseJar
+//}
 
 // Bintray
-Properties properties = new Properties()
-if (project.rootProject.file('local.properties').exists()) {
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-}
+//Properties properties = new Properties()
+//if (project.rootProject.file('local.properties').exists()) {
+//    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//}
 
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = licenseLabel
-        dryRun = false
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = libraryDescription
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = properties.getProperty("bintray.gpg.password")
-                //Optional. The passphrase for GPG signing'
-            }
-            mavenCentralSync {
-                sync = true
-                //Optional (true by default).     Determines whether to sync the version to Maven Central.
-                user = properties.getProperty("bintray.oss.user")         //OSS user token
-                password = properties.getProperty("bintray.oss.password") //OSS user password
-                close = '1'
-                //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
-            }
-        }
-    }
-}
+//bintray {
+//    user = properties.getProperty("bintray.user")
+//    key = properties.getProperty("bintray.apikey")
+//
+//    configurations = ['archives']
+//    pkg {
+//        repo = bintrayRepo
+//        name = bintrayName
+//        desc = libraryDescription
+//        websiteUrl = siteUrl
+//        vcsUrl = gitUrl
+//        licenses = licenseLabel
+//        dryRun = false
+//        publish = true
+//        publicDownloadNumbers = true
+//        version {
+//            desc = libraryDescription
+//            gpg {
+//                sign = true //Determines whether to GPG sign the files. The default is false
+//                passphrase = properties.getProperty("bintray.gpg.password")
+//                //Optional. The passphrase for GPG signing'
+//            }
+//            mavenCentralSync {
+//                sync = true
+//                //Optional (true by default).     Determines whether to sync the version to Maven Central.
+//                user = properties.getProperty("bintray.oss.user")         //OSS user token
+//                password = properties.getProperty("bintray.oss.password") //OSS user password
+//                close = '1'
+//                //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+//            }
+//        }
+//    }
+//}
 

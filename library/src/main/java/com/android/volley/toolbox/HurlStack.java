@@ -21,8 +21,6 @@ import com.android.volley.Request;
 import com.android.volley.Request.Method;
 
 
-
-
 import com.android.volley.http.HttpEntity;
 import com.android.volley.http.HttpResponse;
 
@@ -37,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocketFactory;
 
@@ -59,7 +58,8 @@ public class HurlStack implements HttpStack {
     }
 
     private final UrlRewriter mUrlRewriter;
-    private final SSLSocketFactory mSslSocketFactory;
+    private SSLSocketFactory mSslSocketFactory = null;
+    private HostnameVerifier mHostnameVerifier = null;
 
     public HurlStack() {
         this(null);
@@ -69,16 +69,15 @@ public class HurlStack implements HttpStack {
      * @param urlRewriter Rewriter to use for request URLs
      */
     public HurlStack(UrlRewriter urlRewriter) {
-        this(urlRewriter, null);
+        mUrlRewriter = urlRewriter;
     }
 
-    /**
-     * @param urlRewriter Rewriter to use for request URLs
-     * @param sslSocketFactory SSL factory to use for HTTPS connections
-     */
-    public HurlStack(UrlRewriter urlRewriter, SSLSocketFactory sslSocketFactory) {
-        mUrlRewriter = urlRewriter;
+    public void setSSLSocketFactory(SSLSocketFactory sslSocketFactory) {
         mSslSocketFactory = sslSocketFactory;
+    }
+
+    public void setHostnameVerifier(HostnameVerifier hostnameVerifier) {
+        mHostnameVerifier = hostnameVerifier;
     }
 
     @Override
@@ -122,10 +121,11 @@ public class HurlStack implements HttpStack {
 
     /**
      * Initializes an {@link HttpEntity} from the given {@link HttpURLConnection}.
+     *
      * @param connection
      * @return an HttpEntity populated with data from <code>connection</code>.
      */
-    private static HttpEntity entityFromConnection(HttpURLConnection connection, boolean isGzipEable){
+    private static HttpEntity entityFromConnection(HttpURLConnection connection, boolean isGzipEable) {
         HttpEntity entity = new HttpEntity();
         InputStream inputStream = null;
 
@@ -136,13 +136,13 @@ public class HurlStack implements HttpStack {
         }
 
         //check gzip
-        if(isGzipEable) {
-            try{
+        if (isGzipEable) {
+            try {
                 entity.setContent(new GZIPInputStream(inputStream));
-            }catch (IOException e) {
+            } catch (IOException e) {
                 entity.setContent(inputStream);
             }
-        }else {
+        } else {
             entity.setContent(inputStream);
         }
         entity.setContentLength(connection.getContentLength());
@@ -160,6 +160,7 @@ public class HurlStack implements HttpStack {
 
     /**
      * Opens an {@link HttpURLConnection} with parameters.
+     *
      * @param url
      * @return an open connection
      * @throws IOException
@@ -174,8 +175,13 @@ public class HurlStack implements HttpStack {
         connection.setDoInput(true);
 
         // use caller-provided custom SslSocketFactory, if any, for HTTPS
-        if ("https".equals(url.getProtocol()) && mSslSocketFactory != null) {
-            ((HttpsURLConnection)connection).setSSLSocketFactory(mSslSocketFactory);
+        if ("https".equals(url.getProtocol())) {
+            if (mSslSocketFactory != null) {
+                ((HttpsURLConnection) connection).setSSLSocketFactory(mSslSocketFactory);
+            }
+            if (mHostnameVerifier != null) {
+                ((HttpsURLConnection) connection).setHostnameVerifier(mHostnameVerifier);
+            }
         }
 
         return connection;
@@ -183,7 +189,7 @@ public class HurlStack implements HttpStack {
 
     @SuppressWarnings("deprecation")
     /* package */ static void setConnectionParametersForRequest(HttpURLConnection connection,
-            Request<?> request) throws IOException, AuthFailureError {
+                                                                Request<?> request) throws IOException, AuthFailureError {
         switch (request.getMethod()) {
             case Method.DEPRECATED_GET_OR_POST:
                 // This is the deprecated way that needs to be handled for backwards compatibility.
@@ -251,10 +257,11 @@ public class HurlStack implements HttpStack {
 
     /**
      * Checks if a response message contains a body.
-     * @see <a href="https://tools.ietf.org/html/rfc7230#section-3.3">RFC 7230 section 3.3</a>
+     *
      * @param requestMethod request method
-     * @param responseCode response status code
+     * @param responseCode  response status code
      * @return whether the response has a body
+     * @see <a href="https://tools.ietf.org/html/rfc7230#section-3.3">RFC 7230 section 3.3</a>
      */
     private static boolean hasResponseBody(int requestMethod, int responseCode) {
         return requestMethod != Request.Method.HEAD
