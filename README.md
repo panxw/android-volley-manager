@@ -8,17 +8,19 @@ Android 2.3+(API>=9) is required.
 Tested in Android 5.1, 6.0.
 
 #### 2.Update
-Version: __1.0.3__  
-Date: 2016-07-18  
-Desc: fix paramter bug.
+Version: [![](https://jitpack.io/v/panxw/android-volley-manager.svg)](https://jitpack.io/#panxw/android-volley-manager) (2025-05-26)  
+Update Message: new version public by Jitpak.
 
 #### 3.Usage
 
 build.gradle
 
 ```
-repositories {
-    maven { url 'https://jitpack.io' }
+allprojects {
+	repositories {
+	    maven { url 'https://jitpack.io' }
+	}
+...
 }
 
 ```
@@ -26,12 +28,9 @@ repositories {
 app.gradle
 ```
 dependencies {
-    implementation 'com.github.panxw:android-volley-manager:1.0.3'
+    implementation 'com.github.panxw:android-volley-manager:1.0.3.1'
 }
 ```
-
-##### latest jars for download
-[com.panxw.volley-1.0.3-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.3-classes.jar?raw=true)
 
 #### 4.Sample
 ##### init RequestManager in your Application
@@ -56,9 +55,9 @@ dependencies {
 
 		private static final String TAG = "VolleyTest";
 
-		private static final String GET_URL = "http://www.panxw.com/about.html";
+		private static final String GET_URL = "http://www.sample.com/about.html";
 
-		private static final String POST_URL = "http://www.panxw.com/index.php";
+		private static final String POST_URL = "http://www.sample.com/index.php";
 
 		private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
 
