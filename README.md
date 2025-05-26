@@ -55,9 +55,9 @@ dependencies {
 
 		private static final String TAG = "VolleyTest";
 
-		private static final String GET_URL = "http://www.sample.com/about.html";
+		private static final String GET_URL = "https://panxw.github.io/about.html";
 
-		private static final String POST_URL = "http://www.sample.com/index.php";
+		private static final String POST_URL = "https://panxw.github.io/search?wd=test";
 
 		private static final String POST_JSON = "{\"action\":\"test\", \"info\":\"hello world\"}";
 
