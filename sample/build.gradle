@@ -22,5 +22,6 @@ android {
 }
 
 dependencies {
-    implementation project(':library')
+    implementation project(':android-volley-manager')
 }
+

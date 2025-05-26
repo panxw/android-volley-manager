@@ -5,26 +5,30 @@ Based on Google's [Android Volley](https://github.com/mcxiaoke/android-volley).
 Powered by HttpURLConnection, no HttpClient need now!(HttpClient is Deprecated in Android 5.1)  
 JSON, XML, Map, RequestMap(with file) request supported.  
 Android 2.3+(API>=9) is required.  
-Tested in Android 5.1, 6.0.  
+Tested in Android 5.1, 6.0.
 
 #### 2.Update
-Version: __v1.0.3__  
+Version: __1.0.3__  
 Date: 2016-07-18  
-Desc: fix paramter bug.  
-__JCenter->__[![Download](https://api.bintray.com/packages/panxw/maven/android-volley-manager/images/download.svg) ](https://bintray.com/panxw/maven/android-volley-manager/_latestVersion)  
+Desc: fix paramter bug.
 
 #### 3.Usage
-##### for Maven
-	<dependency>
-		<groupId>com.panxw.volley</groupId>
-		<artifactId>library</artifactId>
-		<version>1.0.3</version>
-	</dependency>
 
-##### for Gradle
-	dependencies {
-		compile 'com.panxw.volley:library:1.0.3'
-	}
+build.gradle
+
+```
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+```
+
+app.gradle
+```
+dependencies {
+    implementation 'com.github.panxw:android-volley-manager:1.0.3'
+}
+```
 
 ##### latest jars for download
 [com.panxw.volley-1.0.3-classes.jar](https://github.com/panxw/android-volley-manager/blob/master/release/com.panxw.volley-1.0.3-classes.jar?raw=true)
