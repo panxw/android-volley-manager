@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-
-group = 'com.github.panxw'     //use GitHub username
-version = 'v1.0.3'            //Git tag when release
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 30
@@ -30,8 +27,21 @@ android {
 }
 
 dependencies {
+
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.panxw'
+                artifactId = 'android-volley-manager'
+                version = 'v1.0.3'
+            }
+        }
+    }
+}
 
 
 
