@@ -1,12 +1,10 @@
 apply plugin: 'com.android.library'
-
 group = 'com.github.panxw'     //use GitHub username
 version = '1.0.3'            //Git tag when release
 
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.1'
-    resourcePrefix 'android_lib_'
     defaultConfig {
         minSdkVersion 17
         versionCode 1

@@ -1,3 +1,3 @@
 jdk: 1.8
 install:
-  - ./gradlew :android-volley-manager:build
+  - ./gradlew :android-volley-manager:publishToMavenLocal
