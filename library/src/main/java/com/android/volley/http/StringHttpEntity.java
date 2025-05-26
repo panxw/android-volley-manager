@@ -3,6 +3,7 @@ package com.android.volley.http;
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import android.text.TextUtils;
@@ -12,7 +13,7 @@ public class StringHttpEntity extends HttpEntity {
 	private static final char NAME_VALUE_CONNECT = '&';
 	private static final String NAME_VALUE_SEPARATOR = "=";
 
-	public StringHttpEntity(final ConcurrentHashMap<String, String> params,
+	public StringHttpEntity(final LinkedHashMap<String, String> params,
 			String charsetName) {
 		final String charset = TextUtils.isEmpty(charsetName) ? DEFAULT_CHARSET
 				: charsetName;
@@ -27,10 +28,10 @@ public class StringHttpEntity extends HttpEntity {
 		}
 	}
 
-	public String format(final ConcurrentHashMap<String, String> params,
+	public String format(final LinkedHashMap<String, String> params,
 			final String charset) {
 		final StringBuilder result = new StringBuilder();
-		for (ConcurrentHashMap.Entry<String, String> entry : params.entrySet()) {
+		for (LinkedHashMap.Entry<String, String> entry : params.entrySet()) {
 			final String encodedName = encodeFormFields(entry.getKey(), charset);
 			final String encodedValue = encodeFormFields(entry.getValue(),
 					charset);

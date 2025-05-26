@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -17,8 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class RequestMap {
 	private static String ENCODING = "UTF-8";
-	protected ConcurrentHashMap<String, String> urlParams;
-	protected ConcurrentHashMap<String, FileWrapper> fileParams;
+	protected LinkedHashMap<String, String> urlParams;
+	protected LinkedHashMap<String, FileWrapper> fileParams;
 
 	public RequestMap() {
 		init();
@@ -30,8 +31,8 @@ public class RequestMap {
 	}
 
 	private void init() {
-		urlParams = new ConcurrentHashMap<String, String>();
-		fileParams = new ConcurrentHashMap<String, FileWrapper>();
+		urlParams = new LinkedHashMap<String, String>();
+		fileParams = new LinkedHashMap<String, FileWrapper>();
 	}
 
 	/**
