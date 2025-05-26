@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 group = 'com.github.panxw'     //use GitHub username
-version = '1.0.3'            //Git tag when release
+version = '1.0.7'            //Git tag when release
 
 android {
     compileSdkVersion 30
