@@ -23,6 +23,6 @@ android {
 
 dependencies {
     //implementation project(':android-volley-manager')
-    implementation 'com.github.panxw:android-volley-manager:v1.0.3'
+    implementation 'com.github.panxw:android-volley-manager:v1.0.3.1'
 }
 

@@ -37,7 +37,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.panxw'
                 artifactId = 'android-volley-manager'
-                version = 'v1.0.3'
+                version = 'v1.0.3.1'
             }
         }
     }
