@@ -43,6 +43,12 @@ RequestManager.getInstance().init(this);
 
 or
 ```
+//init with SSLSocketFactory
+RequestManager.getInstance().init(this, sslSocketFactory);
+```
+
+or
+```
 //init with SSLSocketFactory & HostnameVerifier
 RequestManager.getInstance().init(this, sslSocketFactory, hostnameVerifier);
 ```
