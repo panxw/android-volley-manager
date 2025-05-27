@@ -25,18 +25,18 @@ public class ByteArrayLoadController extends AbsLoadController implements
 
 	@Override
 	public void onErrorResponse(VolleyError error) {
-		String errorMsg = null;
-		if (error.getMessage() != null) {
-			errorMsg = error.getMessage();
-		} else {
-			try {
-				errorMsg = "Server Response Error ("
-						+ error.networkResponse.statusCode + ")";
-			} catch (Exception e) {
-				errorMsg = "Server Response Error";
+		String errorMsg = "Server Response Error";
+		int errorCode=-1;
+		if(error!=null){
+			NetworkResponse networkResponse = error.networkResponse;
+			if(networkResponse!=null){
+				errorCode = networkResponse.statusCode;
+			}
+			if (error.getMessage() != null) {
+				errorMsg = error.getMessage();
 			}
 		}
-		this.mOnLoadListener.onError(errorMsg, getOriginUrl(), this.mAction);
+		this.mOnLoadListener.onError(errorCode, errorMsg, getOriginUrl(), this.mAction);
 	}
 
 	@Override

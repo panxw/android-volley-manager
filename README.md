@@ -28,7 +28,7 @@ allprojects {
 app.gradle
 ```
 dependencies {
-    implementation 'com.github.panxw:android-volley-manager:1.0.3.1'
+    implementation 'com.github.panxw:android-volley-manager:1.0.3.5'
 }
 ```
 
@@ -107,8 +107,8 @@ dependencies {
 		}
 
 		@Override
-		public void onError(String errorMsg, String url, int actionId) {
-			Log.d(TAG, "actionId:" + actionId + ", onError!\n" + errorMsg);
+		public void onError(int errorCode, String errorMsg, String url, int actionId) {
+			Log.d(TAG, "actionId:" + actionId + ", onError: " + errorCode+", "+errorMsg);
 		}
 
 		@Override

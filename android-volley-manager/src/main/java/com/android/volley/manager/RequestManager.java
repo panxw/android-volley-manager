@@ -44,7 +44,7 @@ public class RequestManager {
         void onSuccess(String response, Map<String, String> headers,
                        String url, int actionId);
 
-        void onError(String errorMsg, String url, int actionId);
+        void onError(int errorCode, String errorMsg, String url, int actionId);
     }
 
     private RequestManager() {

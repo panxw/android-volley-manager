@@ -69,17 +69,17 @@ public class RequestListenerHolder implements LoadListener {
 	}
 
 	@Override
-	public void onError(String errorMsg, String url, int actionId) {
+	public void onError(int errorCode, String errorMsg, String url, int actionId) {
 		if (mRequestListenerRef != null) {
 			RequestListener requestListener = mRequestListenerRef.get();
 			if (requestListener != null) {
-				requestListener.onError(errorMsg, url, actionId);
+				requestListener.onError(errorCode, errorMsg, url, actionId);
 				return;
 			}
 		}
 
 		if (this.mRequestListener != null) {
-			this.mRequestListener.onError(errorMsg, url, actionId);
+			this.mRequestListener.onError(errorCode, errorMsg, url, actionId);
 		}
 	}
 }

@@ -14,5 +14,5 @@ public interface LoadListener {
 
 	void onSuccess(byte[] data, Map<String, String> headers, String url, int actionId);
 
-	void onError(String errorMsg, String url, int actionId);
+	void onError(int errorCode, String errorMsg, String url, int actionId);
 }

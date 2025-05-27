@@ -12,8 +12,6 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

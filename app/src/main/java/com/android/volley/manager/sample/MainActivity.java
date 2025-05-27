@@ -78,8 +78,8 @@ public class MainActivity extends Activity implements RequestListener {
 	}
 
 	@Override
-	public void onError(String errorMsg, String url, int actionId) {
-		Log.d(TAG, "actionId:" + actionId + ", onError!\n" + errorMsg);
+	public void onError(int errorCode, String errorMsg, String url, int actionId) {
+		Log.d(TAG, "actionId:" + actionId + ", onError: " + errorCode+", "+errorMsg);
 	}
 
 	@Override
