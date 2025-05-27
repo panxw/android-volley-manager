@@ -33,23 +33,20 @@ dependencies {
 ```
 
 #### 4.Sample
-##### init RequestManager in your Application
+##### init RequestManager in your Application: 
+
 ```
-	public class VolleyApplication extends Application {
-		@Override
-		public void onCreate() {
-			super.onCreate();
-			RequestManager.getInstance().init(this);
-		}
-	
-		@Override
-		public void onTerminate() {
-			super.onTerminate();
-		}
-	}
+//init default
+RequestManager.getInstance().init(this);
 ```
 
-##### use RequestManager to load data
+or
+```
+//init with SSLSocketFactory & HostnameVerifier
+RequestManager.getInstance().init(this, sslSocketFactory, hostnameVerifier);
+```
+
+##### use RequestManager to load data:
 ```
 	public class MainActivity extends Activity implements RequestListener {
 
