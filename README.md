@@ -10,7 +10,7 @@ Tested in Android 5.1, 6.0.
 
 #### 2.Update
 Version: [![](https://jitpack.io/v/panxw/android-volley-manager.svg)](https://jitpack.io/#panxw/android-volley-manager) (2025-05-26)  
-Update Message: new version public by Jitpak.
+Update Message: new version public by Jitpack.
 
 #### 3.Usage
 
